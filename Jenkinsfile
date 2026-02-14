@@ -5,6 +5,6 @@ pipeline {
             steps{
                 sh "docker build -t simple-python-flask ."
             }
-
+         }
     }
 }
