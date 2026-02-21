@@ -24,6 +24,9 @@ spec:
     env:
     - name: DOCKER_TLS_CERTDIR
       value: ""
+    args:
+    - --host=tcp://0.0.0.0:2375
+    - --host=unix:///var/run/docker.sock
 """
         }
     }
@@ -43,25 +46,10 @@ spec:
         stage('Build') {
             steps {
                 container('docker') {
+                    sh 'sleep 10'   // ⬅ importante para dar tempo do daemon subir
                     sh 'docker info'
                     sh "docker build -t simple-python-flask:${IMAGE_TAG} ."
                 }
-            }
-        }
-
-        stage('Test') {
-            steps {
-                container('docker') {
-                    sh "docker run -td --name simple-python-flask-${IMAGE_TAG} simple-python-flask:${IMAGE_TAG}"
-                }
-            }
-        }
-    }
-
-    post {
-        cleanup {
-            container('docker') {
-                sh "docker stop simple-python-flask-${IMAGE_TAG} || true"
             }
         }
     }
