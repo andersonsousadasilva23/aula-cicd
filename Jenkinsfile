@@ -37,4 +37,3 @@ podTemplate(containers: [
         sh "docker stop simple-python-flask-${IMAGE_TAG}"
         }
     }
-}
