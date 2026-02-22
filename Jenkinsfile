@@ -41,7 +41,7 @@ volumes: [
             }
            stage("Push Image"){
                 script {
-                    docker.withRegistry('ihttp://192.168.88.20:8082', 'jenkins_docker'){
+                    docker.withRegistry('http://192.168.88.20:8082', 'jenkins_docker'){
                     sh 'docker push 192.168.88.20:8082/simple-python-flask:${BUILD_ID}'
                    }
                 }
