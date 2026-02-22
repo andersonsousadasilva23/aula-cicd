@@ -24,7 +24,7 @@ volumes: [
 ]) {
 
     node(POD_LABEL) {
-        container('Docker') {
+        container('docker') {
             stage("Clona Git") {
                 git 'http://192.168.88.20:3000/anderson/simplePythonFlask.git'
             }
