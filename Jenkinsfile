@@ -50,13 +50,15 @@ podTemplate(
 
         withSonarQubeEnv('SonarQube') {
 
-          withCredentials([string(credentialsId: 'sqa_d71272119e5d6e98fd48731180038adef302bc3a"', variable: 'SONAR_TOKEN')]) {
+          withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
 
             sh """
               sonar-scanner \
-              -Dsonar.projectKey=courseCatalog \
+              -Dsonar.projectKey=CourseCatalog \
+              -Dsonar.host.url=http://192.168.88.20:9000 \
+              -Dsonar.login=$SONAR_TOKEN \
               -Dsonar.sources=. \
-              -Dsonar.login=$SONAR_TOKEN
+              -Dsonar.python.coverage.reportPaths=nosetests.xml
             """
 
           }
