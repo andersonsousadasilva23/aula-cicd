@@ -10,7 +10,7 @@ podTemplate(
       privileged: true
     ),
     containerTemplate(name: 'kubectl', image: 'alpine', command: 'sleep', args: '99d'),
-    containerTemplate(name: 'openjdk', image: 'openjdk:11', command: 'sleep', args: '99d')
+    containerTemplate(name: 'openjdk', image: 'eclipse-temurin:17-jdk', command: 'sleep', args: '99d')
   ],
   volumes: [
     hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
