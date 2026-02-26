@@ -21,7 +21,7 @@ class AllTests(unittest.TestCase):
         return self.app.post('/',data=dict(
             name=name,password=password), follow_redirects=True)
 
-    def logout():
+    def logout(self):
         return self.app.get('/logout',follow_redirects=True)
 
     def register(self,name,email,password,confirm):
