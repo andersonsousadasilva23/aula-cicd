@@ -1,4 +1,4 @@
-image: python:3.9.10-slim-bullseye
+image: docker:git
 services:
   - docker:dind
 
@@ -9,10 +9,10 @@ stages:
 
 teste-app:
   stage: test
-  image: 
+  image: python:3.9.10-slim-bullseye
   services:
     - docker:dind
   script:
-    - apk add python3-mysqldb libmariadb-dev gcc build-essential pkg-config default-libmysqlclient-dev python3-dev
+    - apt install -y python3-mysqldb libmariadb-dev gcc build-essential pkg-config default-libmysqlclient-dev python3-dev
     - pip install -r requirements.txt
     - nosetests --with-xunit --with-coverage --cover-package=project test_users.py
