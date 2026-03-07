@@ -4,7 +4,7 @@ services:
 
 stages:
   - test
-  - buiid
+  - build
   - deploy
 
 teste-app:
@@ -18,7 +18,7 @@ teste-app:
     - nosetests --with-xunit --with-coverage --cover-package=project test_users.py
   artifacts:
     when: always
-    path: 
+    paths: 
       - nosetests.yml
     reports:
       junit: nosetests.xml
@@ -31,9 +31,9 @@ teste-app:
       - docker:dind
     script:
       - docker build
-    - docker login -u gitlab-ci-token -p "$CI_JOB_TOKEN" "$CI_REGISTRY"
-    - docker build -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA} .
-    - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}
+      - docker login -u gitlab-ci-token -p "$CI_JOB_TOKEN" "$CI_REGISTRY"
+      - docker build -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA} .
+      - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHA}
 
 include:
   - template: Jobs/SAST.gitlab-ci.yml
