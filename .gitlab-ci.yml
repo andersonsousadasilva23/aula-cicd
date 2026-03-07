@@ -19,7 +19,7 @@ teste-app:
   artifacts:
     when: always
     path: 
-      -nosetests.yml
+      - nosetests.yml
     reports:
       junit: nosetests.xml
 
