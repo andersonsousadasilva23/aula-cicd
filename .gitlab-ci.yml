@@ -49,7 +49,7 @@ deploy-homolog:
     - kubectl get pods -n homolog
     
   tags:
-    - curso-cicd-runner
+    - runner-simplepythonflask
 
 include:
   - template: Jobs/SAST.gitlab-ci.yml
