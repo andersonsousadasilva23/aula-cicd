@@ -11,7 +11,7 @@ env:
 jobs:
 
   test:
-    name: "Teste da Aplicação - GITHUB"
+    name: "Teste da Aplicação - GITHUB-Alteração do merge com rebase, assim vai sempre rodar quando for um pull request e não quando for um quando merge"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
