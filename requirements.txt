@@ -9,7 +9,7 @@ Django==5.0.8
 django-nose==1.4.7
 djangorestframework==3.14.0
 idna==3.6
-iniconfig==2.0.0
+iniconfig==2.3.0
 isort==5.13.2
 lxml==5.0.1
 mccabe==0.7.0
